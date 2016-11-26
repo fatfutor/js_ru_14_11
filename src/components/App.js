@@ -3,6 +3,7 @@ import ArticleList from './ArticleList'
 import Select from 'react-select'
 import Chart from './Chart'
 import 'react-select/dist/react-select.css'
+import ShowSelectedDate from './ShowSelectedDate'
 
 class App extends Component {
     static propTypes = {
@@ -11,15 +12,17 @@ class App extends Component {
 
     state = {
         selected: null
-    }
+    };
 
     render() {
         const options = this.props.articles.map(article => ({
             label: article.title,
             value: article.id
-        }))
+        }));
+
         return (
             <div>
+                <ShowSelectedDate />
                 <Chart />
                 <ArticleList articles={this.props.articles} />
                 <Select options = {options} value = {this.state.selected} onChange = {this.handleChange} multi = {true}/>
@@ -28,6 +31,10 @@ class App extends Component {
     }
 
     handleChange = selected => this.setState({ selected })
+}
+
+function sunday(day) {
+    return day.getDay() === 0;
 }
 
 export default App

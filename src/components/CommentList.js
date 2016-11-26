@@ -1,6 +1,7 @@
 import React, { Component, PropTypes } from 'react'
 import Comment from './Comment'
 import toggleOpen from '../decorators/toggleOpen'
+import CommentAdd from './CommentAdd'
 
 class CommentList extends Component {
     static propTypes = {
@@ -29,10 +30,10 @@ class CommentList extends Component {
             <div>
                 {this.getButton()}
                 {this.getList()}
+                <CommentAdd />
             </div>
         )
     }
-
 
     getButton() {
         const { comments, isOpen, toggleOpen } = this.props
