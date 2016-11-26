@@ -7,17 +7,16 @@ class CommentAdd extends React.Component {
   }
 
   render() {
-    const { handleChangeForm } = this.props
 
     return (
       <form action="#">
         <fieldset>
           <legend>Добавить комментарий</legend>
           <label htmlFor="userName">Имя пользователя</label>
-          <input id="userName" type="text" ref="userName" onChange={handleChangeForm('inputNameValue')}/>
+          <input id="userName" type="text" ref="userName" onChange={this.handleChangeForm('inputNameValue')}/>
 
           <label htmlFor="commentMessage">Текст сообщения</label>
-          <input id="commentMessage" type="text" ref="commentMessage" onChange={handleChangeForm('inputTextValue')}/>
+          <input id="commentMessage" type="text" ref="commentMessage" onChange={this.handleChangeForm('inputTextValue')}/>
           <button type="button" onClick={this.handleClickForm}>Добавить</button>
         </fieldset>
       </form>

@@ -33,8 +33,4 @@ class App extends Component {
     handleChange = selected => this.setState({ selected })
 }
 
-function sunday(day) {
-    return day.getDay() === 0;
-}
-
 export default App
