@@ -1,7 +1,7 @@
 import React from 'react'
 import moment from 'moment';
 import DayPicker, { DateUtils } from 'react-day-picker';
-import '../../node_modules/react-day-picker/lib/style.css'
+import 'react-day-picker/lib/style.css'
 
 class ShowSelectedDate extends React.Component {
   constructor(props) {
