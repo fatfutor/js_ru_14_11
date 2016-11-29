@@ -11,24 +11,6 @@ class ArticleList extends Component {
         toggleOpenItem: PropTypes.func.isRequired
     }
 
-    componentWillMount() {
-        console.log('---', 'mounting')
-    }
-
-    componentDidMount() {
-        console.log('---', 'mounted', this.containerRef)
-        console.log('---', this.refs)
-    }
-
-    componentWillReceiveProps(nexProps) {
-        //console.log('isEqual', Object.keys(nexProps).every(key => nexProps[key] == this.props[key]))
-        //console.log('---', 'AL receiving props')
-    }
-
-    componentWillUpdate() {
-        //console.log('---', 'AL will update')
-    }
-
     getContainerRef = ref => {
         this.containerRef = ref
     }
@@ -36,6 +18,8 @@ class ArticleList extends Component {
 
     render() {
         const { articles, isOpen, toggleOpenItem } = this.props
+
+        // console.log(articles)
 
         const articleItems = articles.map(article => (
             <li key = {article.id}>

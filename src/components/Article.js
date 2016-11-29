@@ -6,20 +6,6 @@ import { connect } from 'react-redux'
 
 class Article extends Component {
 
-/*
-    shouldComponentUpdate(nextProps) {
-        return nextProps.isOpen != this.props.isOpen
-    }
-*/
-
-    componentWillUpdate() {
-        console.log('---', 'updating Article')
-    }
-
-    componentDidUpdate() {
-        console.log('---', findDOMNode(this.refs.comments))
-    }
-
     render() {
         const { article, toggleOpen } = this.props
         return (
