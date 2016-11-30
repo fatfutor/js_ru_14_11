@@ -6,18 +6,14 @@ import DateRange from './DateRange'
 import Counter from './Counter'
 import 'react-select/dist/react-select.css'
 import { connect } from 'react-redux'
-import selectId from '../AC/selectId'
-import { bindActionCreators } from 'redux'
+import select from '../AC/select'
 
 class App extends Component {
 
-    // state = {
-    //     selected: null
-    // }
-
     render() {
-        const { articles, selectedArticle } = this.props
-        console.log('App', selectedArticle.selected)
+        const { articles } = this.props.articles
+        const { selected } = this.props.filter
+        // console.log('App', articles, selected)
         const options = articles.map(article => ({
             label: article.title,
             value: article.id
@@ -28,17 +24,17 @@ class App extends Component {
                 <Chart />
                 <DateRange />
                 <ArticleList />
-                <Select options = {options} value = {selectedArticle.selected} onChange = {this.handleChange} multi = {true}/>
+                <Select options = {options} value = {selected} onChange = {this.handleChange} multi = {true}/>
             </div>
         )
     }
 
-    handleChange = selected => this.props.selectId(selected)
+    handleChange = selected => this.props.select(selected)
 }
 
 export default connect(state => ({
     articles: state.articles,
-    selectedArticle: state.selectedArticle
+    filter: state.filter
 }), {
-  selectId
+  select
 })(App)

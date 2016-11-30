@@ -1,11 +1,11 @@
 import { SELECT_ARTICLE } from '../constants'
 
-export default function selectId(articleId) {
-  console.log('selectId', articleId)
+export default function selectId( selected = null) {
+  // console.log('selectAC', selected)
   return {
     type: SELECT_ARTICLE,
     payload: {
-      articleId
+      selected
     }
   }
 }

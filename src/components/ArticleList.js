@@ -4,12 +4,12 @@ import accordion from '../decorators/accordion'
 import { connect } from 'react-redux'
 
 class ArticleList extends Component {
-    static propTypes = {
-        articles: PropTypes.array.isRequired,
-        //from accordion decorator
-        isOpen: PropTypes.func.isRequired,
-        toggleOpenItem: PropTypes.func.isRequired
-    }
+    // static propTypes = {
+    //     articles: PropTypes.array.isRequired,
+    //     //from accordion decorator
+    //     isOpen: PropTypes.func.isRequired,
+    //     toggleOpenItem: PropTypes.func.isRequired
+    // }
 
     getContainerRef = ref => {
         this.containerRef = ref
@@ -17,9 +17,8 @@ class ArticleList extends Component {
 
 
     render() {
-        const { articles, isOpen, toggleOpenItem } = this.props
-
-        // console.log(articles)
+        const { isOpen, toggleOpenItem } = this.props
+        const { articles } = this.props.articles
 
         const articleItems = articles.map(article => (
             <li key = {article.id}>
