@@ -20,7 +20,7 @@ class App extends Component {
             label: article.title,
             value: article.id
         }))
-
+        //лучше эту логику вынести в connect
         let filtered = articles.filter( (art) => {
             if (selected && selected.length > 0 && !selected.find((item) => item.value === art.id))
                 return false
