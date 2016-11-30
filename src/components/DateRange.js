@@ -12,28 +12,19 @@ class DateRange extends Component {
     }
 
     handleDayClick = (e, day) => {
-        const { from, to } = this.props.filter
-        const fromTO = {
-            from,
-            to
-        }
-        this.props.dateRange(DateUtils.addDayToRange(day, fromTO))
+        const { fromTo } = this.props.filter
+        this.props.dateRange(DateUtils.addDayToRange(day, fromTo))
     }
 
 
     render() {
-        const { from, to } = this.props.filter
-        const fromTO = {
-            from,
-            to
-        }
-        // console.log(fromTO, this.state)
-        const selectedRange = from && to && `${from.toDateString()} - ${to.toDateString()}`
+        const { fromTo } = this.props.filter
+        const selectedRange = fromTo.from && fromTo.to && `${fromTo.from.toDateString()} - ${fromTo.to.toDateString()}`
         return (
             <div className="date-range">
                 <DayPicker
                     ref="daypicker"
-                    selectedDays={ day => DateUtils.isDayInRange(day, fromTO) }
+                    selectedDays={ day => DateUtils.isDayInRange(day, fromTo) }
                     onDayClick={ this.handleDayClick }
                 />
                 {selectedRange}

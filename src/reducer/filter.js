@@ -1,8 +1,10 @@
 import { SELECT_ARTICLE, DATE_FROM_TO } from '../constants'
 
 const initialState = {
-  from: null,
-  to: null,
+  fromTo: {
+    from: null,
+    to: null
+  },
   selected: null
 }
 
@@ -14,7 +16,7 @@ export default (state = initialState, action) => {
         return {...state, selected: payload.selected}
 
       case DATE_FROM_TO:
-        return {...state, from: payload.from, to: payload.to}
+        return {...state, fromTo: payload.date}
     }
 
   return state
