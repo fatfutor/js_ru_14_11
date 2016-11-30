@@ -21,7 +21,6 @@ class App extends Component {
             value: article.id
         }))
 
-        //  тупо скопировал значение этой переменной из функции соседа =)
         let filtered = articles.filter( (art) => {
             if (selected && selected.length > 0 && !selected.find((item) => item.value === art.id))
                 return false
