@@ -5,12 +5,12 @@ const initialState = {
     from: null,
     to: null
   },
-  selected: null
+  selected: []
 }
 
 export default (state = initialState, action) => {
     const { type, payload } = action
-    
+
     switch (type) {
       case SELECT_ARTICLE:
         return {...state, selected: payload.selected}
