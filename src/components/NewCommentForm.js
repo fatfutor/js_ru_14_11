@@ -1,36 +1,33 @@
 import React, { Component, PropTypes } from 'react'
+import { connect } from 'react-redux'
+import { addComment } from '../AC/addComment'
 
 class NewCommentForm extends Component {
-    state = {
-        text: '',
-        user: ''
-    }
-
-    handleChange = field => ev => {
-        if (ev.target.value.length > 5) return
-        this.setState({
-            [field]: ev.target.value
-        })
-    }
 
     handleSubmit = ev => {
         ev.preventDefault()
         console.log('---', 'adding comment')
-        this.setState({
-            user: '',
-            text: ''
-        })
+        let comment = {
+            text: this.refs.text.value,
+            user: this.refs.user.value
+        }
+
+        this.props.addComment(this.props.articleId, comment)
+        this.refs.text.value = ''
+        this.refs.user.value = ''
     }
 
     render() {
         return (
             <form onSubmit = {this.handleSubmit}>
-                comment: <input type="text" value={this.state.text} onChange = {this.handleChange('text')}/>
-                user: <input type="text" value={this.state.user} onChange = {this.handleChange('user')}/>
+                comment: <input type="text" ref="text"/>
+                user: <input type="text" ref="user"/>
                 <input type = "submit"/>
             </form>
         )
     }
 }
 
-export default NewCommentForm
+export default connect(null, {
+    addComment
+})(NewCommentForm)

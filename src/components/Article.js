@@ -38,7 +38,7 @@ class Article extends Component {
         return (
             <div>
                 <p>{article.text}</p>
-                <CommentList commentIds = {article.comments} ref = "comments" />
+                <CommentList commentIds = {article.comments} articleId={article.id} ref = "comments" />
             </div>
         )
     }
@@ -54,7 +54,8 @@ Article.propTypes = {
     article: PropTypes.shape({
         title: PropTypes.string.isRequired,
         comments: PropTypes.array,
-        text: PropTypes.string
+        text: PropTypes.string,
+        id: PropTypes.string
     }).isRequired,
     //from connect
     deleteArticle: PropTypes.func

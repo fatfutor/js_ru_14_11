@@ -7,6 +7,7 @@ import NewCommentForm from './NewCommentForm'
 class CommentList extends Component {
     static propTypes = {
         commentIds: PropTypes.array.isRequired,
+        articleId: PropTypes.string,
         //from connect
         comments: PropTypes.array.isRequired,
         //from toggleOpen decorator
@@ -45,9 +46,10 @@ class CommentList extends Component {
     }
 
     getBody() {
-        const { comments, isOpen } = this.props
-        const commentForm = <NewCommentForm />
+        const { comments, isOpen, articleId } = this.props
+        const commentForm = <NewCommentForm articleId={articleId}/>
         if (!isOpen || !comments.length) return <div>{commentForm}</div>
+        console.log('----',comments)
         const commentItems = comments.map(comment => <li key = {comment.id}><Comment comment = {comment} /></li>)
         return <div><ul>{commentItems}</ul>{commentForm}</div>
     }
@@ -55,4 +57,5 @@ class CommentList extends Component {
 
 export default connect((state, props) => ({
     comments: props.commentIds.map(id => state.comments.get(id))
+    // comments: props.commentIds.map(id => state.comments[id])
 }))(toggleOpen(CommentList))
