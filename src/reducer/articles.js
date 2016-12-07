@@ -5,7 +5,7 @@ import { Map, List } from 'immutable'
 // const defaultArticles = normalizedArticles.reduce((acc, articles) => {
 //     return acc.set(articles.id, articles)
 // }, new Map({}))
-
+//почему не переписал на Map?
 export default (articlesState = normalizedArticles, action) => {
     const { type, payload, generateId } = action
 
@@ -15,7 +15,7 @@ export default (articlesState = normalizedArticles, action) => {
 
         case ADD_COMMENT:
             let newArticlesState = [...articlesState]
-
+            //не мутируй данные! Мы для этого даже immutable завели
             newArticlesState.forEach(article => {
                 if (article.id === payload.articleId) {
                     article.comments.push(generateId)
