@@ -13,6 +13,7 @@ class NewCommentForm extends Component {
         }
 
         this.props.addComment(this.props.articleId, comment)
+        //почему значения не в стейте?
         this.refs.text.value = ''
         this.refs.user.value = ''
     }
